@@ -2,6 +2,7 @@ package postgres
 
 import (
 	"context"
+	"fmt"
 	"github.com/jackc/pgx/v5/pgxpool"
 	"wallet/internal/config"
 )
@@ -11,11 +12,13 @@ type DB struct {
 }
 
 func NewDB(cfg *config.DatabaseConfig) *DB {
+	fmt.Println("create db")
 	pool, err := pgxpool.New(context.Background(), cfg.DSN())
 	if err != nil {
 		panic("failed to connect to database: " + err.Error())
 	}
 
+	fmt.Println("connect to database")
 	if err := pool.Ping(context.Background()); err != nil {
 		panic("failed to ping database: " + err.Error())
 	}
@@ -29,7 +32,7 @@ func (db *DB) GetPool() *pgxpool.Pool {
 	return db.pool
 }
 
-func (db *DB) Close(ctx context.Context) error {
+func (db *DB) Close(_ context.Context) error {
 	db.pool.Close()
 	return nil
 }

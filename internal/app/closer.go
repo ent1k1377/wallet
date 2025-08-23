@@ -20,7 +20,7 @@ func (c *Closer) Add(f Func) {
 
 func (c *Closer) Close(ctx context.Context) error {
 	msgs := make([]string, 0, len(c.funcs))
-	
+
 	var wg sync.WaitGroup
 	for _, f := range c.funcs {
 		wg.Add(1)
@@ -33,12 +33,12 @@ func (c *Closer) Close(ctx context.Context) error {
 			wg.Done()
 		}(f)
 	}
-	
+
 	wg.Wait()
-	
+
 	if len(msgs) > 0 {
 		return fmt.Errorf("shutdown finished with error(s): \n%s", strings.Join(msgs, "\n"))
 	}
-	
+
 	return nil
 }

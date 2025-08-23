@@ -2,6 +2,7 @@ package http
 
 import (
 	"context"
+	"fmt"
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"wallet/internal/config"
@@ -15,6 +16,7 @@ type Server struct {
 }
 
 func NewServer(walletHandler *handler.Wallet, cfg *config.ServerConfig) *Server {
+	fmt.Println("create server")
 	engine := gin.Default()
 
 	return &Server{
@@ -28,6 +30,8 @@ func NewServer(walletHandler *handler.Wallet, cfg *config.ServerConfig) *Server 
 }
 
 func (s *Server) Run() error {
+	s.SetRoutes()
+
 	return s.httpServer.ListenAndServe()
 }
 

@@ -6,7 +6,7 @@ import (
 )
 
 type ServerConfig struct {
-	Port string `yaml:"port, required"`
+	Port string `yaml:"port"`
 }
 
 func LoadServerConfig() (*ServerConfig, error) {

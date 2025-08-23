@@ -27,6 +27,7 @@ type App struct {
 }
 
 func New() *App {
+	fmt.Println("create app")
 	cfg := config.MustLoadConfig()
 
 	db := postgres.NewDB(cfg.DatabaseConfig)
@@ -43,6 +44,7 @@ func New() *App {
 }
 
 func (a *App) Run() {
+	fmt.Println("starting app")
 	a.closer.Add(a.server.Close)
 	a.closer.Add(a.db.Close)
 
@@ -53,6 +55,7 @@ func (a *App) Run() {
 	defer cancel()
 
 	go func() {
+		fmt.Println("starting server")
 		if err := a.server.Run(); err != nil && !errors.Is(err, http.ErrServerClosed) {
 			cancel()
 		}
