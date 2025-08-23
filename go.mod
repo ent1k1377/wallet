@@ -1,4 +1,4 @@
-module wallet
+module github.com/ent1k1377/wallet
 
 go 1.24
 

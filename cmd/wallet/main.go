@@ -1,6 +1,6 @@
 package main
 
-import "wallet/internal/app"
+import "github.com/ent1k1377/wallet/internal/app"
 
 func main() {
 	app.New().Run()

@@ -1,6 +1,6 @@
 package mapper
 
-import "wallet/internal/transport/http/dto"
+import "github.com/ent1k1377/wallet/internal/transport/http/dto"
 
 func ToErrorResponse(err string) dto.ErrorResponse {
 	return dto.ErrorResponse{

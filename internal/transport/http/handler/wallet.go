@@ -1,14 +1,14 @@
 package handler
 
 import (
+	"github.com/ent1k1377/wallet/internal/service"
+	"github.com/ent1k1377/wallet/internal/transport/http/dto"
+	"github.com/ent1k1377/wallet/internal/transport/http/mapper"
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
 	"github.com/shopspring/decimal"
 	"net/http"
 	"strconv"
-	"wallet/internal/service"
-	"wallet/internal/transport/http/dto"
-	"wallet/internal/transport/http/mapper"
 )
 
 type Wallet struct {

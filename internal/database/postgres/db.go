@@ -3,8 +3,8 @@ package postgres
 import (
 	"context"
 	"fmt"
+	"github.com/ent1k1377/wallet/internal/config"
 	"github.com/jackc/pgx/v5/pgxpool"
-	"wallet/internal/config"
 )
 
 type DB struct {

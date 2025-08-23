@@ -1,9 +1,9 @@
 package mapper
 
 import (
+	"github.com/ent1k1377/wallet/internal/database/postgres/repository"
+	"github.com/ent1k1377/wallet/internal/transport/http/dto"
 	"github.com/shopspring/decimal"
-	"wallet/internal/database/postgres/repository"
-	"wallet/internal/transport/http/dto"
 )
 
 func ToBalanceResponse(balance *decimal.Decimal) dto.BalanceResponse {

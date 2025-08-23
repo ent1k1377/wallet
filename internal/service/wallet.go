@@ -1,9 +1,9 @@
 package service
 
 import (
+	"github.com/ent1k1377/wallet/internal/database/postgres/repository"
 	"github.com/google/uuid"
 	"github.com/shopspring/decimal"
-	"wallet/internal/database/postgres/repository"
 )
 
 type Wallet struct {

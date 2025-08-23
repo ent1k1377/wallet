@@ -1,6 +1,6 @@
 package dto
 
-import "wallet/internal/database/postgres/repository"
+import "github.com/ent1k1377/wallet/internal/database/postgres/repository"
 
 type SendAmountRequest struct {
 	From   string `json:"from"`

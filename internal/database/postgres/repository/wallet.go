@@ -3,11 +3,11 @@ package repository
 import (
 	"context"
 	"errors"
+	"github.com/ent1k1377/wallet/internal/pkg/math"
 	"github.com/google/uuid"
 	"github.com/jackc/pgx/v5/pgxpool"
 	"github.com/shopspring/decimal"
 	"time"
-	"wallet/internal/pkg/math"
 )
 
 var (

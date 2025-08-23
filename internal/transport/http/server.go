@@ -3,10 +3,10 @@ package http
 import (
 	"context"
 	"fmt"
+	"github.com/ent1k1377/wallet/internal/config"
+	"github.com/ent1k1377/wallet/internal/transport/http/handler"
 	"github.com/gin-gonic/gin"
 	"net/http"
-	"wallet/internal/config"
-	"wallet/internal/transport/http/handler"
 )
 
 type Server struct {
