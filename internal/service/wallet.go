@@ -16,6 +16,19 @@ func NewWallet(walletRepository *repository.Wallet) *Wallet {
 	}
 }
 
+func (s *Wallet) InitializeFirstRun() error {
+	cnt, err := s.walletRepository.CountWallets()
+	if err != nil {
+		return err
+	}
+
+	if cnt == 0 {
+		err = s.walletRepository.AddRandomWallets(10)
+	}
+
+	return err
+}
+
 func (s *Wallet) Transfer(from, to uuid.UUID, amount decimal.Decimal) error {
 	if !s.walletRepository.Exist(from) {
 		return repository.WalletNotExist
@@ -23,13 +36,12 @@ func (s *Wallet) Transfer(from, to uuid.UUID, amount decimal.Decimal) error {
 		return repository.WalletNotExist
 	}
 
-	s.walletRepository.Send(from, to, amount)
-	return nil
+	return s.walletRepository.Send(from, to, amount)
 }
 
-func (s *Wallet) GetBalance(address uuid.UUID) (*decimal.Decimal, error) {
+func (s *Wallet) GetBalance(address uuid.UUID) (decimal.Decimal, error) {
 	if !s.walletRepository.Exist(address) {
-		return nil, repository.WalletNotExist
+		return decimal.Decimal{}, repository.WalletNotExist
 	}
 
 	return s.walletRepository.GetBalance(address)

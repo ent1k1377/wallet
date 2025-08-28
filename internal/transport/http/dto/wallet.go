@@ -1,11 +1,14 @@
 package dto
 
-import "github.com/ent1k1377/wallet/internal/database/postgres/repository"
+import (
+	"github.com/ent1k1377/wallet/internal/database/postgres/repository"
+	"github.com/shopspring/decimal"
+)
 
 type SendAmountRequest struct {
-	From   string `json:"from"`
-	To     string `json:"to"`
-	Amount string `json:"amount"`
+	From   string          `json:"from"`
+	To     string          `json:"to"`
+	Amount decimal.Decimal `json:"amount"`
 }
 
 type BalanceResponse struct {

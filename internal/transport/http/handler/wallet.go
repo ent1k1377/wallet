@@ -6,7 +6,6 @@ import (
 	"github.com/ent1k1377/wallet/internal/transport/http/mapper"
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"
-	"github.com/shopspring/decimal"
 	"net/http"
 	"strconv"
 )
@@ -41,11 +40,7 @@ func (w *Wallet) Send(ctx *gin.Context) {
 		return
 	}
 
-	amount, err := decimal.NewFromString(request.Amount)
-	if err != nil {
-		ctx.JSON(http.StatusBadRequest, mapper.ToErrorResponse("amount is not valid"))
-		return
-	}
+	amount := request.Amount
 
 	err = w.walletService.Transfer(uuidFrom, uuidTo, amount)
 	if err != nil {
@@ -65,8 +60,8 @@ func (w *Wallet) GetLast(ctx *gin.Context) {
 	}
 
 	transfers, err := w.walletService.GetLastTransfers(count)
-	if transfers != nil {
-		ctx.JSON(http.StatusInternalServerError, mapper.ToErrorResponse("get last transfers"))
+	if err != nil {
+		ctx.JSON(http.StatusInternalServerError, mapper.ToErrorResponse(err.Error()))
 		return
 	}
 

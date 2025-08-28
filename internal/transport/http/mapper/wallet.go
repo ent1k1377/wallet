@@ -6,7 +6,7 @@ import (
 	"github.com/shopspring/decimal"
 )
 
-func ToBalanceResponse(balance *decimal.Decimal) dto.BalanceResponse {
+func ToBalanceResponse(balance decimal.Decimal) dto.BalanceResponse {
 	return dto.BalanceResponse{
 		Balance: balance.String(),
 	}

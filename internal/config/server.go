@@ -11,7 +11,7 @@ type ServerConfig struct {
 
 func LoadServerConfig() (*ServerConfig, error) {
 	var config ServerConfig
-	configPath := "configs/server_config.yaml"
+	configPath := "configs/config.yaml"
 	if path := os.Getenv("SERVER_CONFIG_PATH"); path != "" {
 		configPath = path
 	}
